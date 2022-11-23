@@ -1,0 +1,93 @@
+#why-us {
+  &.why-us {
+    position: relative;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center bottom;
+  }
+
+  .why-us-bg {
+    position: absolute;
+    background: black;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    filter: opacity(0.5);
+  }
+
+  .section-header {
+    position: relative;
+
+    h3, p {
+      color: #fff;
+    }
+
+    h3 {
+      padding-top: 50px;
+    }
+  }
+
+  .card {
+    background: #00458f;
+    border-color: #00458f;
+    border-radius: 10px;
+    margin: 0 15px;
+    padding: 15px 0;
+    text-align: center;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+    height: 100%;
+
+    .readmore {
+      color: #fff;
+      font-weight: 600;
+      display: inline-block;
+      transition: 0.3s ease-in-out;
+      border-bottom: #00458f solid 2px;
+
+      &:hover {
+        border-bottom: #fff solid 2px;
+      }
+    }
+
+    &:hover {
+      background: #003b7a;
+      border-color: #003b7a;
+    }
+
+    i {
+      font-size: 48px;
+      padding-top: 15px;
+      color: #bfddfe;
+    }
+
+    h5 {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 15px;
+      color: #d8eafe;
+    }
+  }
+
+  .particle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  @media (max-width: 991px) {
+    .card {
+      margin: 0;
+    }
+  }
+}
+

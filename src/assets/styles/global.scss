@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* === Plugin styles === */
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/variables";
+
+@import "mixins/colorVariables";
+
+@import "~react-responsive-carousel/lib/styles/carousel.min.css";
+
+@import "vendor/animate/animate.min.css";
+
+/* === Icon fonts === */
+@import "~@mdi/font/scss/materialdesignicons";
+@import "~font-awesome/scss/font-awesome";
+
+/* === Template mixins === */
+@import "mixins/functions";
+@import "mixins/background";
+
+/* === Pages === */
+@import "pages/index";
+
+/* === Components === */
+@import "mixins/button";
+@import "mixins/section";
+@import "components/about";
+@import "components/carousel";
+@import "components/clients";
+@import "components/contact";
+@import "components/services";
+@import "components/testimonials";
+@import "components/whyUs";
+
+/* === Layout === */
+@import "tools/navbar";
+@import "tools/footer";
+@import "tools/spinner";
+@import "tools/backToTop";
+
+a{
+    text-decoration: none;
+}
