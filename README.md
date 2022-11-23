@@ -1,0 +1,2 @@
+# myWebsiteNextJS
+myWebsite NextJS version
