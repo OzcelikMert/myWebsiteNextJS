@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
 import {PagePropCommonDocument} from "types/client/app/pageProps";
-import ServicesComponent from "components/services";
-import WhyUsComponent from "components/whyUs";
-import TestimonialsComponent from "components/testimonials";
-import ClientsComponent from "components/clients";
-import ContactComponent from "components/contact";
-import AboutComponent from "components/about";
+import ServicesComponent from "components/elements/services";
+import WhyUsComponent from "components/elements/whyUs";
+import TestimonialsComponent from "components/elements/testimonials";
+import ClientsComponent from "components/elements/clients";
+import ContactComponent from "components/elements/contact";
+import AboutComponent from "components/elements/about";
 
 type PageState = {};
 

@@ -53,7 +53,7 @@ export interface PostAlternateDocument {
 }
 
 export interface PostGetParamDocument {
-    langId: string
+    langId?: string
     url?: string,
     pageTypeId?: PageTypeId
     postId?: string

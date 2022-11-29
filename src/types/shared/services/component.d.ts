@@ -3,7 +3,7 @@ import LanguageKeys from "../app/languages";
 
 export interface ComponentGetParamDocument {
     _id?: string
-    langId: string,
+    langId?: string,
     elementId?: string
     getContents?: 1,
 }
