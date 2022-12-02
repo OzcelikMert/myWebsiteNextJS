@@ -1,7 +1,0 @@
-interface PageStateCommonDocument {
-
-}
-
-export {
-    PageStateCommonDocument
-}

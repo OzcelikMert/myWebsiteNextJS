@@ -6,9 +6,9 @@ import {PagePropCommonDocument} from "types/client/app/pageProps";
 
 type PageState = {};
 
-type PageProps = {} & PagePropCommonDocument<{ sliders?: PostDocument[] }>;
+type PageProps = {} & PagePropCommonDocument<{ sliders: PostDocument[] }>;
 
-class CarouselComponent extends Component<PageProps, PageState> {
+export default class ComponentCarousel extends Component<PageProps, PageState> {
     constructor(props: PageProps) {
         super(props);
     }
@@ -51,11 +51,9 @@ class CarouselComponent extends Component<PageProps, PageState> {
                     showStatus={false}
                     renderIndicator={() => null}
                 >
-                    {this.props.serverData.sliders?.map((slider) => <this.Item {...slider} />)}
+                    {this.props.pageData?.sliders.map((slider) => <this.Item {...slider} />)}
                 </Carousel>
             </div>
         );
     }
 }
-
-export default CarouselComponent;

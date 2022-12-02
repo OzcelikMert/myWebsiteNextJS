@@ -28,10 +28,10 @@ type PageState = {
 
 type PageProps = {} & PagePropCommonDocument<{}>;
 
-class ContactComponent extends Component<PageProps, PageState> {
+export default class ComponentContact extends Component<PageProps, PageState> {
     constructor(props: PageProps) {
         super(props);
-        const component = this.props.serverData.page?.components?.findSingle("elementId", "contactForm");
+        const component = this.props.pageData?.page?.components?.findSingle("elementId", "contactForm");
         this.state = {
             component: component,
             isSubmittingContactForm: false,
@@ -63,7 +63,7 @@ class ContactComponent extends Component<PageProps, PageState> {
 
     async onSubmitContactForm(event: React.FormEvent) {
         event.preventDefault();
-        let contactForm = this.props.serverData.pageSettings.contactForms?.findSingle("key", "contact");
+        let contactForm = this.props.appData.settings.contactForms?.findSingle("key", "contact");
         if (contactForm) {
             this.setState({
                 isSubmittingContactForm: true
@@ -222,5 +222,3 @@ class ContactComponent extends Component<PageProps, PageState> {
         );
     }
 }
-
-export default ContactComponent;

@@ -11,11 +11,11 @@ type PageState = {
 
 type PageProps = {} & PagePropCommonDocument<{ clients?: PostDocument[] }>;
 
-class ClientsComponent extends Component<PageProps, PageState> {
+export default class ComponentClients extends Component<PageProps, PageState> {
     constructor(props: PageProps) {
         super(props);
         this.state = {
-            component: this.props.serverData.page?.components?.findSingle("elementId", "clients")
+            component: this.props.pageData?.page?.components?.findSingle("elementId", "clients")
         }
     }
 
@@ -46,12 +46,10 @@ class ClientsComponent extends Component<PageProps, PageState> {
                     </div>
 
                     <div className="row g-0 clients-wrap clearfix wow fadeInUp">
-                        {this.props.serverData.clients?.map((client) => <this.Item {...client}/>)}
+                        {this.props.pageData?.clients?.map((client) => <this.Item {...client}/>)}
                     </div>
                 </div>
             </section>
         );
     }
 }
-
-export default ClientsComponent;

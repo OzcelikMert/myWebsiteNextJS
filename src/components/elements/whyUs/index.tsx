@@ -13,11 +13,11 @@ type PageState = {
 
 type PageProps = {} & PagePropCommonDocument<{}>;
 
-class WhyUsComponent extends Component<PageProps, PageState> {
+export default class ComponentWhyUs extends Component<PageProps, PageState> {
     constructor(props: PageProps) {
         super(props);
         this.state = {
-            component: this.props.serverData.page?.components?.findSingle("elementId", "whyUs")
+            component: this.props.pageData?.page?.components?.findSingle("elementId", "whyUs")
         }
     }
 
@@ -72,5 +72,3 @@ class WhyUsComponent extends Component<PageProps, PageState> {
         );
     }
 }
-
-export default WhyUsComponent;

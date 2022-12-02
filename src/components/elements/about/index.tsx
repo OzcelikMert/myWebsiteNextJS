@@ -10,11 +10,11 @@ type PageState = {
 
 type PageProps = {} & PagePropCommonDocument<{}>;
 
-class AboutComponent extends Component<PageProps, PageState> {
+export default class ComponentAbout extends Component<PageProps, PageState> {
     constructor(props: PageProps) {
         super(props);
         this.state = {
-            component: this.props.serverData.page?.components?.findSingle("elementId", "about")
+            component: this.props.pageData?.page?.components?.findSingle("elementId", "about")
         }
     }
 
@@ -92,5 +92,3 @@ class AboutComponent extends Component<PageProps, PageState> {
         );
     }
 }
-
-export default AboutComponent;

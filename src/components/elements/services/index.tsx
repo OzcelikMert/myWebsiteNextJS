@@ -11,11 +11,11 @@ type PageState = {
 
 type PageProps = {} & PagePropCommonDocument<{ services?: PostDocument[] }>;
 
-class ServicesComponent extends Component<PageProps, PageState> {
+export default class ComponentServices extends Component<PageProps, PageState> {
     constructor(props: PageProps) {
         super(props);
         this.state = {
-            component: this.props.serverData.page?.components?.findSingle("elementId", "services")
+            component: this.props.pageData?.page?.components?.findSingle("elementId", "services")
         }
     }
 
@@ -60,12 +60,10 @@ class ServicesComponent extends Component<PageProps, PageState> {
                     </header>
 
                     <div className="row row-eq-height justify-content-center">
-                        {this.props.serverData.services?.map((service) => this.Item(service))}
+                        {this.props.pageData?.services?.map((service) => this.Item(service))}
                     </div>
                 </div>
             </section>
         );
     }
 }
-
-export default ServicesComponent;

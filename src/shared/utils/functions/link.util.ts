@@ -1,14 +1,14 @@
-import {PreRenderedDataDocument} from "types/shared/utils/preRenderedData";
 import LanguageDocument from "types/shared/services/language";
+import {AppDataDocument} from "types/client/app/pageProps";
 
 export default {
-    home(data: PreRenderedDataDocument) {
+    home(data: AppDataDocument) {
         return data.apiPath.website.base;
     },
     language(language: LanguageDocument) {
         return `${language.shortKey}-${language.locale}`;
     },
-    target(data: PreRenderedDataDocument, target: string) {
+    target(data: AppDataDocument, target: string) {
         let path = `${data.apiPath.website.base}`;
         const language = data.languages.findSingle("_id", data.cookies.languageId || "");
         if (language) {
@@ -26,7 +26,7 @@ export default {
 
         return path;
     },
-    changeLanguage(apiPath: PreRenderedDataDocument["apiPath"], language: LanguageDocument, languageKeyWithLocale: PreRenderedDataDocument["languageKeyWithLocale"]) {
+    changeLanguage(apiPath: AppDataDocument["apiPath"], language: LanguageDocument, languageKeyWithLocale: AppDataDocument["languageKeyWithLocale"]) {
         let path = "";
         if(language){
             path = `${apiPath.website.base}/${this.language(language)}${apiPath.website.originalUrl}`.replace(/\/$/, "");

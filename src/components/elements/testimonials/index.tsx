@@ -13,11 +13,11 @@ type PageState = {
 
 type PageProps = {} & PagePropCommonDocument<{ testimonials?: PostDocument[] }>;
 
-class TestimonialsComponent extends Component<PageProps, PageState> {
+export default class ComponentTestimonials extends Component<PageProps, PageState> {
     constructor(props: PageProps) {
         super(props);
         this.state = {
-            component: this.props.serverData.page?.components?.findSingle("elementId", "testimonials")
+            component: this.props.pageData?.page?.components?.findSingle("elementId", "testimonials")
         }
     }
 
@@ -55,7 +55,7 @@ class TestimonialsComponent extends Component<PageProps, PageState> {
                                     showThumbs={false}
                                     showStatus={false}
                                 >
-                                    {this.props.serverData.testimonials?.map((testimonial) => <this.Item {...testimonial}/>)}
+                                    {this.props.pageData?.testimonials?.map((testimonial) => <this.Item {...testimonial}/>)}
                                 </Carousel>
                             </div>
                         </div>
@@ -65,5 +65,3 @@ class TestimonialsComponent extends Component<PageProps, PageState> {
         );
     }
 }
-
-export default TestimonialsComponent;

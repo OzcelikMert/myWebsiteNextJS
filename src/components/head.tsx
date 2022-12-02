@@ -1,14 +1,14 @@
 import React, {Component} from "react";
 import Head from 'next/head'
+import {PagePropCommonDocument} from "types/client/app/pageProps";
 
 type PageState = {};
 
-type PageProps = {};
+type PageProps = {} & PagePropCommonDocument<any>;
 
 export default class ComponentHead extends Component<PageProps, PageState> {
     constructor(props: PageProps) {
         super(props);
-        console.log(this.props)
     }
 
     render() {
@@ -19,12 +19,4 @@ export default class ComponentHead extends Component<PageProps, PageState> {
             </Head>
         );
     }
-}
-
-export async function getServerSideProps(context: any) {
-    return {
-        props: {
-            serverData: {surname: "test"}
-        },
-    };
 }

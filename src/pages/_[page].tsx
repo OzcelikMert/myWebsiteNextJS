@@ -1,24 +1,28 @@
 import {PagePropCommonDocument} from "types/client/app/pageProps";
+import PostDocument from "types/shared/services/post";
 import React, {Component} from "react";
-import {GetServerSidePropsContext} from 'next'
 
 import "styles/pages/home.module.scss";
-import ComponentCarousel from "components/elements/carousel";
+import {GetServerSidePropsContext, NextPage, NextPageContext} from "next";
+import HTMLReactParser from "html-react-parser";
 import SelectedComponents from "components/elements/selectedComponents";
-import {GetServerSidePropsDocument} from "types/shared/next/getServerSideProps";
 import postService from "shared/services/post.service";
 import {PageTypeId, PostTypeId, StatusId} from "shared/constants";
 import viewLib from "../lib/view.lib";
 import themeLib from "../lib/theme.lib";
-import PostDocument from "types/shared/services/post";
+import {GetServerSidePropsDocument} from "types/shared/next/getServerSideProps";
 
 type PageState = {};
 
-type PageProps = {
-    components: any[]
-} & PagePropCommonDocument<{ sliders: PostDocument[] }>;
+type PageProps = {} & PagePropCommonDocument<{
+    sliders: PostDocument[];
+    services: PostDocument[];
+    testimonials: PostDocument[];
+    whyUs: PostDocument[];
+    clients: PostDocument[];
+}>;
 
-export default class PageHome extends Component<PageProps, PageState> {
+export default class PageDynamic extends Component<PageProps, PageState> {
     constructor(props: PageProps) {
         super(props);
     }
@@ -26,7 +30,11 @@ export default class PageHome extends Component<PageProps, PageState> {
     render() {
         return (
             <div>
-                <ComponentCarousel {...this.props}/>
+                <section id="pageContent">
+                    <div className="container">
+                        {HTMLReactParser(this.props.pageData?.page?.contents?.content || "")}
+                    </div>
+                </section>
                 <SelectedComponents {...this.props} />
             </div>
         );
@@ -36,11 +44,13 @@ export default class PageHome extends Component<PageProps, PageState> {
 export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsDocument<{}>> {
     let req = context.req;
 
+    console.log(context.params)
+
     let page = (await postService.get({
         langId: req.appData.languageId,
         typeId: PostTypeId.Page,
         getContents: 1,
-        pageTypeId: PageTypeId.HomePage,
+        url: (context.params?.page ?? "") as string,
         statusId: StatusId.Active
     })).data;
 
@@ -48,13 +58,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
 
     if (req.pageData.page) {
         await viewLib.set(req);
-
-        req.pageData.sliders = req.pageData.page.pageTypeId == PageTypeId.HomePage
-            ? (await postService.get({
-                langId: req.appData.languageId,
-                typeId: PostTypeId.Slider,
-                statusId: StatusId.Active
-            })).data : []
 
         await themeLib.setComponents(req);
     }
