@@ -47,7 +47,7 @@ export default interface PostDocument {
 }
 
 export interface PostAlternateDocument {
-    langId: mongoose.Types.ObjectId
+    langId: string
     title?: string,
     url?: string
 }

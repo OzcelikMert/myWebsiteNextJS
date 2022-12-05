@@ -8,6 +8,9 @@ export default {
     language(language: LanguageDocument) {
         return `${language.shortKey}-${language.locale}`;
     },
+    languageUpperLocale(language: LanguageDocument) {
+        return `${language.shortKey}_${language.locale.toUpperCase()}`;
+    },
     target(data: AppDataDocument, target: string) {
         let path = `${data.apiPath.website.base}`;
         const language = data.languages.findSingle("_id", data.cookies.languageId || "");
