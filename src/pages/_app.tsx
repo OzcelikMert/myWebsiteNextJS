@@ -34,9 +34,10 @@ function App(props: AppProps) {
 }
 
 App.getInitialProps = async (props: AppContext) => {
-    if(typeof window === "undefined" && props.ctx.req) {
+    if(typeof window === "undefined" && props.ctx.req && props.ctx.res) {
         let req = props.ctx.req;
-        console.log(props.ctx.req.cookies);
+        let res = props.ctx.res;
+
         req.pageData = {
             ...req.pageData
         }
@@ -44,12 +45,22 @@ App.getInitialProps = async (props: AppContext) => {
             ...req.appData
         };
 
-        pathLib.set(req);
         cookieLib.set(req);
+        pathLib.set(req);
         await languageLib.set(req);
+        await settingLib.setDefaultLanguageId(req);
 
-        languageLib.check(req);
-        await settingLib.set(req);
+        let langMatches = req.appData.apiPath.website.originalUrl.match(/\/([a-z]{2}\-[a-z]{2})/gm);
+        if(langMatches && langMatches.length > 0) {
+            let langKey = langMatches[0].slice(1);
+            if(languageLib.check(req, res, langKey)) return {};
+            cookieLib.setLanguageId(req, res)
+            await settingLib.set(req);
+            if(languageLib.isDefault(req, res)) return {};
+        }else {
+            if(languageLib.checkCookie(req, res)) return {};
+            await settingLib.set(req);
+        }
 
         await themeLib.setTools(req);
     }

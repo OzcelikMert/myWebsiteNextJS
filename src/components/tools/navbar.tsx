@@ -92,7 +92,7 @@ export default class Navbar extends Component<PageProps, PageState> {
                     {
                         this.props.appData.languages.map((lang) => this.props.appData.languageId == lang._id ? null : (
                             <li className="nav-item nav-link">
-                                <a href={LinkUtil.changeLanguage(this.props.appData.apiPath, lang, this.props.appData.languageKeyWithLocale)}>
+                                <a href={LinkUtil.changeLanguage(this.props.appData, lang)}>
                                     <div className="row">
                                         <div className="col-3">
                                             <img className="flag-size" src={this.props.appData.apiPath.uploads.flags + lang.image} alt={lang.title}/>

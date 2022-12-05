@@ -36,7 +36,7 @@ export default class PageHome extends Component<PageProps, PageState> {
 export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsDocument<{}>> {
     let req = context.req;
 
-    let page = (await postService.get({
+    let pages = (await postService.get({
         langId: req.appData.languageId,
         typeId: PostTypeId.Page,
         getContents: 1,
@@ -44,9 +44,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
         statusId: StatusId.Active
     })).data;
 
-    req.pageData.page = page.length > 0 ? page[0] : undefined;
+    let page = pages.length > 0 ? pages[0] : null;
 
-    if (req.pageData.page) {
+    if (page) {
+        req.pageData.page = page;
         await viewLib.set(req);
 
         req.pageData.sliders = req.pageData.page.pageTypeId == PageTypeId.HomePage

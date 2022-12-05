@@ -41,5 +41,6 @@ export default interface SettingDocument {
 }
 
 export interface SettingGetParamDocument {
-    langId?: string
+    langId?: string,
+    onlyDefaultLanguageId?: boolean
 }

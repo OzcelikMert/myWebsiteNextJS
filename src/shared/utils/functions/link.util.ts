@@ -26,13 +26,12 @@ export default {
 
         return path;
     },
-    changeLanguage(apiPath: AppDataDocument["apiPath"], language: LanguageDocument, languageKeyWithLocale: AppDataDocument["languageKeyWithLocale"]) {
+    changeLanguage(appData: AppDataDocument, language: LanguageDocument) {
         let path = "";
-        if(language){
-            path = `${apiPath.website.base}/${this.language(language)}${apiPath.website.originalUrl}`.replace(/\/$/, "");
-            if (languageKeyWithLocale) {
-                path = apiPath.website.full.replace(languageKeyWithLocale, this.language(language))
-            }
+        if(appData.languageId != appData.settings.defaultLangId) {
+          path = appData.apiPath.website.full.replace(appData.languageKeyWithLocale ?? "", this.language(language))
+        } else {
+            path = `${appData.apiPath.website.base}/${this.language(language)}${appData.apiPath.website.originalUrl}`.replace(/\/$/, "");
         }
         return path;
     }
