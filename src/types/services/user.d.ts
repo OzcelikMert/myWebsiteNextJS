@@ -1,4 +1,4 @@
-import {StatusId} from "shared/constants";
+import {StatusId} from "constants/index";
 
 export default interface UserDocument {
     _id: string

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import imageSourceUtil from "shared/utils/functions/imageSource.util";
-import {ComponentDocument} from "types/shared/services/component";
+import imageSourceUtil from "utils/functions/imageSource.util";
+import {ComponentDocument} from "types/services/component";
 import {PagePropCommonDocument} from "types/client/app/pageProps";
 import Image from 'next/image'
 

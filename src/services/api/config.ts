@@ -1,4 +1,4 @@
-import {ApiRequestConfigDocument} from "types/shared/services/api/config";
+import {ApiRequestConfigDocument} from "types/services/api/config";
 
 let ApiRequestConfig: ApiRequestConfigDocument = {}
 

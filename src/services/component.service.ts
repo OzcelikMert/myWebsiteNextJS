@@ -1,7 +1,7 @@
 import Api from "./api";
-import {ServicePages} from "../constants";
-import ServiceResultDocument from "types/shared/services/api/result";
-import {ComponentDocument, ComponentGetParamDocument} from "types/shared/services/component";
+import {ServicePages} from "constants/index";
+import ServiceResultDocument from "types/services/api/result";
+import {ComponentDocument, ComponentGetParamDocument} from "types/services/component";
 
 export default {
     get(params: ComponentGetParamDocument): Promise<ServiceResultDocument<ComponentDocument[]>> {

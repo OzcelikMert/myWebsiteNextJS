@@ -1,6 +1,6 @@
 import {IncomingMessage} from "http";
-import settingService from "shared/services/setting.service";
-import Variable from "shared/library/variable";
+import settingService from "services/setting.service";
+import Variable from "library/variable";
 
 export default {
     async set(req: IncomingMessage) {

@@ -1,5 +1,5 @@
 import {ApiRequestParamMethodDocument} from "./index";
-import {Result} from "shared/utils/ajax";
+import {Result} from "utils/ajax";
 
 interface ApiRequestConfigDocument {
     beforeSend?: beforeSend

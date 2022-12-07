@@ -1,9 +1,9 @@
 import Api from "./api";
-import {ServicePages} from "../constants";
-import ServiceResultDocument from "types/shared/services/api/result";
+import {ServicePages} from "constants/index";
+import ServiceResultDocument from "types/services/api/result";
 import {
     SubscriberAddDocument
-} from "types/shared/services/subscriber";
+} from "types/services/subscriber";
 
 export default {
     add(params: SubscriberAddDocument) {

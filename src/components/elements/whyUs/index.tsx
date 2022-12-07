@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {ComponentDocument} from "types/shared/services/component";
+import {ComponentDocument} from "types/services/component";
 import WhyUsBG from "images/why_us.jpg";
 import Particles from "react-tsparticles";
 import {loadFull} from "tsparticles";

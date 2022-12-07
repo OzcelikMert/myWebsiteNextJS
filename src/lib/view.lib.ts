@@ -1,6 +1,6 @@
 import {IncomingMessage} from "http";
-import postService from "shared/services/post.service";
-import viewService from "shared/services/view.service";
+import postService from "services/post.service";
+import viewService from "services/view.service";
 
 export default {
     async set(req: IncomingMessage) {

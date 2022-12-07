@@ -1,4 +1,4 @@
-import pathUtil from "shared/utils/path.util";
+import pathUtil from "utils/path.util";
 import absoluteUrl from "next-absolute-url";
 import {IncomingMessage} from "http";
 

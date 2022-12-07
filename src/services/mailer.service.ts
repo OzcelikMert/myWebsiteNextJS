@@ -1,6 +1,6 @@
 import Api from "./api";
-import {ServicePages} from "../constants";
-import {MailerPostParamDocument} from "types/shared/services/mailer";
+import {ServicePages} from "constants/index";
+import {MailerPostParamDocument} from "types/services/mailer";
 
 export default {
     post(params: MailerPostParamDocument) {

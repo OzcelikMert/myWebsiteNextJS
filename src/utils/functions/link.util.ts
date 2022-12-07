@@ -1,4 +1,4 @@
-import LanguageDocument from "types/shared/services/language";
+import LanguageDocument from "types/services/language";
 import {AppDataDocument} from "types/client/app/pageProps";
 
 export default {

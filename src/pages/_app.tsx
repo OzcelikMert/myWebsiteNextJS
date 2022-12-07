@@ -3,19 +3,19 @@ import React from "react";
 
 import "styles/global.scss";
 
-import "shared/library/variable/array"
-import "shared/library/variable/string"
-import "shared/library/variable/number"
-import "shared/library/variable/date"
-import "shared/library/variable/math"
+import "library/variable/array"
+import "library/variable/string"
+import "library/variable/number"
+import "library/variable/date"
+import "library/variable/math"
 
 import ComponentHead from "components/head";
 import ProviderNoFound from "components/providers/noFound";
-import cookieLib from "../lib/cookie.lib";
-import pathLib from "../lib/path.lib";
-import languageLib from "../lib/language.lib";
-import settingLib from "../lib/setting.lib";
-import themeLib from "../lib/theme.lib";
+import cookieLib from "lib/cookie.lib";
+import pathLib from "lib/path.lib";
+import languageLib from "lib/language.lib";
+import settingLib from "lib/setting.lib";
+import themeLib from "lib/theme.lib";
 import Navbar from "components/tools/navbar";
 import BackToTop from "components/tools/backToTop";
 import Footer from "components/tools/footer";

@@ -1,5 +1,5 @@
-import V from "../../library/variable";
-import pathUtil from "shared/utils/path.util";
+import V from "library/variable";
+import pathUtil from "../path.util";
 
 export default {
     getUploadedImageSrc(imageName?: string, uploadPaths = pathUtil.uploads): any {

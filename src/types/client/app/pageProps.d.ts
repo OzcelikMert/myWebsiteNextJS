@@ -1,8 +1,8 @@
 import {NextRouter} from "next/dist/shared/lib/router/router";
-import PostDocument from "types/shared/services/post";
-import SettingDocument from "types/shared/services/setting";
-import LanguageDocument from "types/shared/services/language";
-import {ComponentDocument} from "types/shared/services/component";
+import PostDocument from "types/services/post";
+import SettingDocument from "types/services/setting";
+import LanguageDocument from "types/services/language";
+import {ComponentDocument} from "types/services/component";
 
 export interface PagePropCommonDocument<T> {
     appData: AppDataDocument

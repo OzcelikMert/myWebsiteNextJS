@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import imageSourceUtil from "shared/utils/functions/imageSource.util";
+import imageSourceUtil from "utils/functions/imageSource.util";
 import {PagePropCommonDocument} from "types/client/app/pageProps";
 
-import PostDocument from "types/shared/services/post";
-import LinkUtil from "shared/utils/functions/link.util";
-import {PageTypeId} from "shared/constants";
+import PostDocument from "types/services/post";
+import LinkUtil from "utils/functions/link.util";
+import {PageTypeId} from "constants/index";
 
 type PageState = {
     isNavbarSticky: boolean;

@@ -1,9 +1,9 @@
 import Api from "./api";
-import {ServicePages} from "../constants";
-import ServiceResultDocument from "types/shared/services/api/result";
+import {ServicePages} from "constants/index";
+import ServiceResultDocument from "types/services/api/result";
 import PostTermDocument, {
     PostTermGetParamDocument, PostTermUpdateViewParamDocument,
-} from "types/shared/services/postTerm";
+} from "types/services/postTerm";
 
 export default {
     get(params: PostTermGetParamDocument): Promise<ServiceResultDocument<PostTermDocument[]>> {

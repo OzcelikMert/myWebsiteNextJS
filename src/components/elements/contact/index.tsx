@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import {ComponentDocument} from "types/shared/services/component";
-import HandleForm from "shared/library/react/handles/form";
+import {ComponentDocument} from "types/services/component";
+import HandleForm from "library/react/handles/form";
 import ReactSlider from "react-slider";
-import mailerService from "shared/services/mailer.service";
+import mailerService from "services/mailer.service";
 import {PagePropCommonDocument} from "types/client/app/pageProps";
 
 type PageState = {

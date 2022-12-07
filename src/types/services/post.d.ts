@@ -1,7 +1,7 @@
 import {PopulateTermsDocument} from "./postTerm";
 import {PopulateAuthorIdDocument} from "./user";
-import {PageTypeId, PostTypeId, StatusId} from "shared/constants";
-import {ComponentDocument} from "types/shared/services/component";
+import {PageTypeId, PostTypeId, StatusId} from "constants/index";
+import {ComponentDocument} from "types/services/component";
 
 export interface PostContentButtonDocument {
     _id?: string

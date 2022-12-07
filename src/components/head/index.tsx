@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import Head from 'next/head'
 import {PagePropCommonDocument} from "types/client/app/pageProps";
-import Variable from "shared/library/variable";
-import imageSourceUtil from "shared/utils/functions/imageSource.util";
-import linkUtil from "shared/utils/functions/link.util";
+import Variable from "library/variable";
+import imageSourceUtil from "utils/functions/imageSource.util";
+import linkUtil from "utils/functions/link.util";
 
 type PageState = {};
 
@@ -51,10 +51,7 @@ export default class ComponentHead extends Component<PageProps, PageState> {
 
         return (
             <Head>
-                <link rel="shortcut icon" href={imageSourceUtil.getUploadedImageSrc(appData.settings.icon, appData.apiPath.uploads)} />
                 <title>{title}</title>
-                <link rel="canonical" href={appData.apiPath.website.full}/>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
                 <meta name="description" content={desc} />
                 <meta name="copyright" content={appData.settings.seoContents?.title} />

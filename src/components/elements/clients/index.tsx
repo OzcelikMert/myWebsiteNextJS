@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import {ComponentDocument} from "types/shared/services/component";
-import PostDocument from "types/shared/services/post";
-import imageSourceUtil from "shared/utils/functions/imageSource.util";
+import {ComponentDocument} from "types/services/component";
+import PostDocument from "types/services/post";
+import imageSourceUtil from "utils/functions/imageSource.util";
 import {PagePropCommonDocument} from "types/client/app/pageProps";
 import Image from 'next/image'
 

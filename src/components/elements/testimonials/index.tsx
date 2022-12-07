@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import {ComponentDocument} from "types/shared/services/component";
-import PostDocument from "types/shared/services/post";
+import {ComponentDocument} from "types/services/component";
+import PostDocument from "types/services/post";
 import {Carousel} from "react-responsive-carousel";
-import imageSourceUtil from "shared/utils/functions/imageSource.util";
+import imageSourceUtil from "utils/functions/imageSource.util";
 import HTMLReactParser from "html-react-parser";
 import {PagePropCommonDocument} from "types/client/app/pageProps";
 import Image from 'next/image'

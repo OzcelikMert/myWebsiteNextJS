@@ -1,15 +1,15 @@
 import {PagePropCommonDocument} from "types/client/app/pageProps";
-import PostDocument from "types/shared/services/post";
+import PostDocument from "types/services/post";
 import React, {Component} from "react";
 
 import "styles/pages/home.module.scss";
 import {GetServerSidePropsContext, NextPage, NextPageContext} from "next";
 import HTMLReactParser from "html-react-parser";
 import SelectedComponents from "components/elements/selectedComponents";
-import postService from "shared/services/post.service";
-import {PageTypeId, PostTypeId, StatusId} from "shared/constants";
-import viewLib from "../lib/view.lib";
-import themeLib from "../lib/theme.lib";
+import postService from "services/post.service";
+import {PageTypeId, PostTypeId, StatusId} from "constants/index";
+import viewLib from "lib/view.lib";
+import themeLib from "lib/theme.lib";
 import {GetServerSidePropsDocument} from "types/shared/next/getServerSideProps";
 
 type PageState = {};

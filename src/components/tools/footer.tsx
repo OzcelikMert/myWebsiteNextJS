@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {PagePropCommonDocument} from "types/client/app/pageProps";
 
-import HandleForm from "shared/library/react/handles/form";
-import subscriberService from "shared/services/subscriber.service";
-import LinkUtil from "shared/utils/functions/link.util";
+import HandleForm from "library/react/handles/form";
+import subscriberService from "services/subscriber.service";
+import LinkUtil from "utils/functions/link.util";
 
 type PageState = {
     isSubmittingSubscribe: boolean

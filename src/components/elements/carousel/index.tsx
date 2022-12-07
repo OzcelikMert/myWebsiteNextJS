@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import imageSourceUtil from "shared/utils/functions/imageSource.util";
+import imageSourceUtil from "utils/functions/imageSource.util";
 import {Carousel} from "react-responsive-carousel";
-import PostDocument from "types/shared/services/post";
+import PostDocument from "types/services/post";
 import {PagePropCommonDocument} from "types/client/app/pageProps";
 
 type PageState = {};

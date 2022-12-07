@@ -1,6 +1,6 @@
 import {IncomingMessage, ServerResponse} from "http";
-import languageService from "shared/services/language.service";
-import linkUtil from "shared/utils/functions/link.util";
+import languageService from "services/language.service";
+import linkUtil from "utils/functions/link.util";
 
 export default {
     async set(req: IncomingMessage) {

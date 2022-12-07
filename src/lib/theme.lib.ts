@@ -1,7 +1,7 @@
 import {IncomingMessage} from "http";
-import postService from "shared/services/post.service";
-import {PostTypeId, StatusId} from "shared/constants";
-import componentService from "shared/services/component.service";
+import postService from "services/post.service";
+import {PostTypeId, StatusId} from "constants/index";
+import componentService from "services/component.service";
 
 export default {
     async setTools(req: IncomingMessage) {

@@ -1,9 +1,9 @@
-import {ErrorCodes, Timeouts} from "../../utils/ajax";
-import {ApiRequestParamDocument} from "types/shared/services/api";
-import ServiceResultDocument from "types/shared/services/api/result";
-import pathUtil from "shared/utils/path.util";
+import {ApiRequestParamDocument} from "types/services/api";
+import ServiceResultDocument from "types/services/api/result";
+import pathUtil from "utils/path.util";
 //const fetch = require("cross-fetch");
 import 'cross-fetch/polyfill'
+import {ErrorCodes} from "library/api";
 
 class ApiRequest {
     constructor(params: ApiRequestParamDocument) {
