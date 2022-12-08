@@ -24,11 +24,12 @@ export default class ComponentClients extends Component<PageProps, PageState> {
             <div className="col-lg-3 col-md-4 col-xs-6">
                 <div className="client-logo">
                     <a href={props.contents?.url} target="_blank">
-                        <img
-                            loading="lazy"
+                        <Image
                             src={imageSourceUtil.getUploadedImageSrc(props.contents?.image)}
                             className="img-fluid"
                             alt={props.contents?.title ?? ""}
+                            height={250}
+                            width={250}
                         />
                     </a>
                 </div>

@@ -35,9 +35,12 @@ export default class ComponentServices extends Component<PageProps, PageState> {
         return (
             <div className={`col-lg-${this.itemRow % 2 === 0 ? "6" : "4"} mb-4`}>
                 <div className="card wow bounceInUp">
-                    <img
+                    <Image
                         src={imageSourceUtil.getUploadedImageSrc(props.contents?.image)}
+                        className="img-fluid"
                         alt={props.contents?.title ?? ""}
+                        height={250}
+                        width={250}
                     />
                     <div className="card-body">
                         <h5 className="card-title">{props.contents?.title}</h5>

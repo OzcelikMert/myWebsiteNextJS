@@ -27,7 +27,7 @@ export default class ComponentWhyUs extends Component<PageProps, PageState> {
 
     render() {
         return (
-            <div id="why-us" className="why-us wow fadeIn" style={{backgroundImage: `url(${WhyUsBG})`}}>
+            <div id="why-us" className="why-us wow fadeIn" style={{backgroundImage: `url(${WhyUsBG.src})`}}>
                 <div className="why-us-bg"/>
                 <Particles id="particle_why_us" options={{"style": {"position": "absolute"}, ...particleJson}}
                            init={(engine) => this.particleInit(engine)}/>

@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {PagePropCommonDocument} from "types/client/app/pageProps";
-import Component404 from "components/elements/errorCodes/404";
 import Page404 from "pages/404";
 
 type PageState = {};
@@ -15,6 +14,6 @@ export default class ProviderNoFound extends Component<PageProps, PageState> {
     }
 
     render() {
-        return this.props.pageData && this.props.pageData.page ? this.props.children : <Page404 {...this.props} />
+        return this.props.pageData && this.props.pageData.page ? this.props.children : <Page404 {...this.props}/>;
     }
 }

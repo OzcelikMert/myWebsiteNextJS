@@ -3,8 +3,7 @@ import React, {Component} from "react";
 
 import "styles/pages/home.module.scss";
 import Component404 from "components/elements/errorCodes/404";
-import Variable from "library/variable";
-import {Head} from "next/document";
+import Head from 'next/head'
 
 type PageState = {};
 
@@ -22,16 +21,13 @@ export default class Page404 extends Component<PageProps, PageState> {
         let title = `${appData.settings.seoContents?.title} | 404`;
 
         return (
-            <html>
-                <head>
+            <>
+                <Head>
                     <title>{title}</title>
                     <meta name="robots" content="noindex, nofollow" />
-                </head>
-                <body>
-                    <Component404 {...this.props} />
-
-                </body>
-            </html>
+                </Head>
+                <Component404 {...this.props}/>
+            </>
         );
     }
 }

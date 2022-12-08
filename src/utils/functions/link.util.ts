@@ -13,9 +13,12 @@ export default {
     },
     target(data: AppDataDocument, target: string) {
         let path = `${data.apiPath.website.base}`;
-        const language = data.languages.findSingle("_id", data.cookies.languageId || "");
-        if (language) {
-            path = `${data.apiPath.website.base}/${this.language(language)}`;
+
+        if(data.languageId != data.settings.defaultLangId){
+            const language = data.languages.findSingle("_id", data.languageId);
+            if (language) {
+                path = `${data.apiPath.website.base}/${this.language(language)}`;
+            }
         }
 
         if (

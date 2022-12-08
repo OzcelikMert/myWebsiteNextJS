@@ -14,8 +14,16 @@ export default class ComponentHead extends Component<PageProps, PageState> {
         super(props);
     }
 
-    get getTags() {
-        return (this.props.pageData.page?.terms.map(term => term?.contents.title) ?? this.props.appData.settings.seoContents?.tags ?? []).join(",")
+    get getKeywords() {
+        let terms: string[] = [];
+
+        if(this.props.pageData.page && this.props.pageData.page.terms.length > 0){
+            terms = this.props.pageData.page.terms.map(term => term?.contents.title).filter(term => term) as string[];
+        }else if(this.props.appData.settings.seoContents?.tags && this.props.appData.settings.seoContents.tags.length > 0) {
+            terms = this.props.appData.settings.seoContents.tags;
+        }
+
+        return terms.join(",")
     }
 
     get getAlternates() {
@@ -43,9 +51,8 @@ export default class ComponentHead extends Component<PageProps, PageState> {
     render() {
         let pageData = this.props.pageData;
         let appData = this.props.appData;
-
         let title = `${appData.settings.seoContents?.title}${!Variable.isEmpty(pageData.page?.contents?.title) ? ` | ${pageData.page?.contents?.title}` : ""}`;
-        let desc = pageData.page?.contents?.seoContent ?? appData.settings.seoContents?.content ?? "";
+        let desc = pageData.page?.contents?.seoContent || appData.settings.seoContents?.content || "";
         let logo = imageSourceUtil.getUploadedImageSrc(appData.settings.logo, appData.apiPath.uploads)
         let language = this.props.appData.languages.findSingle("_id", this.props.appData.languageId);
 
@@ -56,7 +63,7 @@ export default class ComponentHead extends Component<PageProps, PageState> {
                 <meta name="description" content={desc} />
                 <meta name="copyright" content={appData.settings.seoContents?.title} />
                 <meta name="author" content="Özçelik Software" />
-                <meta name="keywords" content={this.getTags} />
+                <meta name="keywords" content={this.getKeywords} />
                 {this.getAlternates}
 
                 <meta itemProp="name" content={title} />

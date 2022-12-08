@@ -37,11 +37,12 @@ export default class ComponentAbout extends Component<PageProps, PageState> {
                         </div>
 
                         <div className="col-lg-6 background order-lg-2 order-1 wow fadeInUp about_system_col">
-                            <img
-                                loading="lazy"
+                            <Image
                                 src={imageSourceUtil.getUploadedImageSrc(this.state.component?.types?.findSingle("elementId", "img1")?.contents?.content)}
                                 alt={this.state.component?.types?.findSingle("elementId", "title")?.contents?.content ?? ""}
-                                className="img-fluid"
+                                className="img-fluid w-100"
+                                height={250}
+                                width={500}
                             />
                         </div>
                     </div>
@@ -49,11 +50,13 @@ export default class ComponentAbout extends Component<PageProps, PageState> {
                     <div className="row about-extra">
                         <div className="col-lg-6 wow fadeInUp">
                             <div style={{overflow: "hidden"}}>
-                                <img
+                                <Image
                                     src={imageSourceUtil.getUploadedImageSrc(this.state.component?.types?.findSingle("elementId", "img2")?.contents?.content)}
                                     alt={this.state.component?.types?.findSingle("elementId", "rightTitle")?.contents?.content ?? ""}
-                                    className="img-fluid"
+                                    className="img-fluid w-100"
                                     style={{marginTop: "-125px"}}
+                                    height={250}
+                                    width={500}
                                 />
                             </div>
                         </div>
@@ -69,12 +72,13 @@ export default class ComponentAbout extends Component<PageProps, PageState> {
 
                     <div className="row about-extra">
                         <div className="col-lg-6 wow fadeInUp order-1 order-lg-2">
-                            <img
-                                loading="lazy"
+                            <Image
                                 src={imageSourceUtil.getUploadedImageSrc(this.state.component?.types?.findSingle("elementId", "img3")?.contents?.content)}
                                 alt={this.state.component?.types?.findSingle("elementId", "endTitle")?.contents?.content ?? ""}
-                                className="img-fluid"
+                                className="img-fluid w-100"
                                 style={{marginTop: "-80px"}}
+                                height={250}
+                                width={500}
                             />
                         </div>
 

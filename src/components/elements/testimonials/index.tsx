@@ -24,10 +24,12 @@ export default class ComponentTestimonials extends Component<PageProps, PageStat
     Item = (props: PostDocument) => {
         return (
             <div className="testimonial-item">
-                <img
-                    className="testimonial-img"
+                <Image
                     src={imageSourceUtil.getUploadedImageSrc(props.contents?.image)}
+                    className="img-fluid testimonial-img"
                     alt={props.contents?.title ?? ""}
+                    height={250}
+                    width={250}
                 />
                 <h3 className="text-start">{props.contents?.title}</h3>
                 <h4 className="text-start">{props.contents?.shortContent}</h4>
