@@ -21,11 +21,7 @@ export default class HTMLDocument extends Component<PageProps, PageState> {
         let language = appData.languages.findSingle("_id", appData.languageId);
         return (
             <Html lang={language ? linkUtil.languageUpperLocale(language) : ""}>
-                <Head>
-                    <link rel="shortcut icon" href={imageSourceUtil.getUploadedImageSrc(appData.settings.icon, appData.apiPath.uploads)} />
-                    <link rel="canonical" href={appData.apiPath.website.full}/>
-                    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                </Head>
+                <Head />
                 <body>
                     <Main />
                     <NextScript />

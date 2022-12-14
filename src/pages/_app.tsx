@@ -1,5 +1,6 @@
 import type {AppContext, AppProps} from 'next/app'
 import React from "react";
+import Head from 'next/head'
 
 import "styles/global.scss";
 
@@ -19,17 +20,25 @@ import themeLib from "lib/theme.lib";
 import Navbar from "components/tools/navbar";
 import BackToTop from "components/tools/backToTop";
 import Footer from "components/tools/footer";
+import imageSourceUtil from "utils/functions/imageSource.util";
 
 function App(props: AppProps) {
     let data = {...{router: props.router, ...props.pageProps}};
     return (
-        <ProviderNoFound {...data}>
-            <ComponentHead {...data} />
-            <Navbar {...data} />
-            <BackToTop {...data} />
-            <props.Component {...data} />
-            <Footer {...data} />
-        </ProviderNoFound>
+        <>
+            <Head>
+                <link rel="shortcut icon" href={imageSourceUtil.getUploadedImageSrc(props.pageProps.appData.settings.icon, props.pageProps.appData.apiPath.uploads)} />
+                <link rel="canonical" href={props.pageProps.appData.apiPath.website.full}/>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
+            <ProviderNoFound {...data}>
+                <ComponentHead {...data} />
+                <Navbar {...data} />
+                <BackToTop {...data} />
+                <props.Component {...data} />
+                <Footer {...data} />
+            </ProviderNoFound>
+        </>
     )
 }
 
