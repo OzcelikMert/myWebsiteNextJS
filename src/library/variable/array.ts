@@ -14,19 +14,21 @@ Array.prototype.indexOfKey = function (key, value) {
 
     if(typeof value !== "undefined"){
         findIndex = this.map(data => {
-            let returnData: any = undefined;
+            let _data: any = undefined;
 
             if(typeof key === "string"){
                 if(key === ""){
-                    returnData = data;
+                    _data = data;
                 }else {
                     for(const name of key.split(".")) {
-                        returnData = returnData[name];
+                        if(typeof _data !== "undefined"){
+                            _data = _data[name];
+                        }
                     }
                 }
             }
 
-            return returnData;
+            return _data;
         }).indexOf(value)
     }
 
@@ -42,7 +44,9 @@ Array.prototype.findSingle = function (key, value) {
                 if(key !== ""){
                     let _data = data;
                     for(const name of key.split(".")) {
-                        _data = _data[name];
+                        if(typeof _data !== "undefined"){
+                            _data = _data[name];
+                        }
                     }
                 }
             }
@@ -54,7 +58,7 @@ Array.prototype.findSingle = function (key, value) {
 }
 Array.prototype.findMulti = function (key, value, isLike = true) {
     let founds = Array();
-    this.find(function (data) {
+    this.find((data) => {
         let query: boolean = false;
 
         if(typeof value !== "undefined"){
@@ -63,7 +67,9 @@ Array.prototype.findMulti = function (key, value, isLike = true) {
                 if(key !== ""){
                     let _data = data;
                     for(const name of key.split(".")) {
-                        _data = _data[name];
+                        if(typeof _data !== "undefined"){
+                            _data = _data[name];
+                        }
                     }
                 }
             }
