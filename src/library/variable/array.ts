@@ -1,44 +1,81 @@
 declare global {
     interface Array<T> {
-        indexOfKey(key: keyof this[0] | "", value: any): number
-        findSingle(key: keyof this[0] | "", value: this[0][keyof this[0]]): this[0] | undefined
-        findMulti(key: keyof this[0] | "" | this[0][keyof this[0]], value: this[0][keyof this[0]] | this[0][keyof this[0]][], isLike?: boolean): this
-        orderBy(key: keyof this[0] | "", sort_type: `asc` | `desc`): this
+        indexOfKey(key: string, value: any): number
+        findSingle(key: string, value: any): T | undefined
+        findMulti(key: string, value: any | any[], isLike?: boolean): this
+        orderBy(key: string | "", sort_type: `asc` | `desc`): this
         serializeObject(): object,
         remove(index: number, deleteCount?: number): void;
     }
 }
 
 Array.prototype.indexOfKey = function (key, value) {
-    return this.map(data => {
-        return (key === "")
-            ? data
-            : (typeof data[key] !== undefined)
-                ? data[key]
-                : -1;
-    }).indexOf(value);
-}
+    let findIndex = -1;
 
+    if(typeof value !== "undefined"){
+        findIndex = this.map(data => {
+            let returnData: any = undefined;
+
+            if(typeof key === "string"){
+                if(key === ""){
+                    returnData = data;
+                }else {
+                    for(const name of key.split(".")) {
+                        returnData = returnData[name];
+                    }
+                }
+            }
+
+            return returnData;
+        }).indexOf(value)
+    }
+
+    return findIndex;
+}
 Array.prototype.findSingle = function (key, value) {
-    return this.find(function(data, index){
-        data._index = index;
-        return ((key === "") ? data : data[key]) == value
+    return this.find(function (data) {
+        let query: boolean = false;
+
+        if(typeof value !== "undefined"){
+            let _data = data;
+            if(typeof key === "string"){
+                if(key !== ""){
+                    let _data = data;
+                    for(const name of key.split(".")) {
+                        _data = _data[name];
+                    }
+                }
+            }
+            query = _data == value;
+        }
+
+        return query;
     });
 }
 Array.prototype.findMulti = function (key, value, isLike = true) {
     let founds = Array();
-    this.find(function(data, index){
-        let query = (Array.isArray(value) ? value.includes(((key === "") ? data : data[key])) : ((key === "") ? data : data[key]) == value);
-        if(typeof key === "string"){
-            try{
-                let subData: any = data;
-                for(const name of key.split(".")) {
-                    subData = subData[name];
+    this.find(function (data) {
+        let query: boolean = false;
+
+        if(typeof value !== "undefined"){
+            let _data = data;
+            if(typeof key === "string"){
+                if(key !== ""){
+                    let _data = data;
+                    for(const name of key.split(".")) {
+                        _data = _data[name];
+                    }
                 }
-                query = (Array.isArray(value) ? value.includes(subData) : (subData) == value);
-            }catch (e) {}
+            }
+
+            if(Array.isArray(value)){
+                query = value.includes(_data);
+            }else {
+                query = _data == value;
+            }
         }
-        if(query === isLike) founds.push(Object.assign(data, {_index: index}));
+
+        if (query === isLike) founds.push(Object.assign(data));
     });
     return founds;
 }
