@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-
+console.log(process.env)
 const nextConfig = {
     env: {
         API_PROTOCOL: process.env.API_PROTOCOL,
@@ -9,7 +9,6 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     images: {
-        contentSecurityPolicy: ``,
         remotePatterns: [
             {
                 protocol: process.env.API_PROTOCOL,
@@ -18,10 +17,7 @@ const nextConfig = {
                 pathname: "/uploads/**"
             },
         ],
-    },
-    experimental: {
-        allowMiddlewareResponseBody: true,
-    },
+    }
 }
 
 module.exports = nextConfig

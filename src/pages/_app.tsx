@@ -47,6 +47,11 @@ App.getInitialProps = async (props: AppContext) => {
         let req = props.ctx.req;
         let res = props.ctx.res;
 
+        res.setHeader(
+            'Cache-Control',
+            'public, s-maxage=10, stale-while-revalidate=59'
+        );
+
         req.pageData = {
             ...req.pageData
         }
