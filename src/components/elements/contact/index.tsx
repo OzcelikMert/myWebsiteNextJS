@@ -92,7 +92,7 @@ export default class ComponentContact extends Component<PageProps, PageState> {
                         state.isSuccessContactForm = true;
                     }
                     state.isSubmittingContactForm = false;
-                    return;
+                    return state;
                 })
             })
         }

@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-console.log(process.env)
+
 const nextConfig = {
     env: {
         API_PROTOCOL: process.env.API_PROTOCOL,
