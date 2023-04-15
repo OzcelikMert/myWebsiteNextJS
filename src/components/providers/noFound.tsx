@@ -14,6 +14,11 @@ export default class ProviderNoFound extends Component<PageProps, PageState> {
     }
 
     render() {
-        return this.props.pageData && this.props.pageData.page ? this.props.children : <Page404 {...this.props}/>;
+        if(!this.props.pageData || !this.props.pageData.page){
+            this.props.router.push("/404")
+            return null;
+        }
+
+        return this.props.children;
     }
 }

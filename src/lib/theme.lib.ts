@@ -51,7 +51,6 @@ export default {
                                 statusId: StatusId.Active
                             })).data;
                             break;
-
                     }
                 }
             }
