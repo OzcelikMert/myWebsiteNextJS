@@ -1,27 +1,32 @@
-import {StatusId} from "constants/index";
+import {UserDocument} from "../models/user";
 
-export default interface UserDocument {
+export interface UserPopulateDocument {
     _id: string
-    roleId: number,
-    statusId: StatusId,
-    image: string,
     name: string,
-    comment: string,
-    phone: string,
-    email: string,
-    password: string,
-    permissions: number[],
-    banDateEnd: Date,
-    banComment: string,
-    facebook: string,
-    instagram: string,
-    twitter: string,
-    views: number,
+    url: string,
+    image: string
 }
 
-export interface PopulateAuthorIdDocument {
-    _id: string,
-    name: string,
-    email: string,
-    url: string
+export type UserGetResultDocument = {
+    isOnline?: boolean
+} & UserDocument
+
+export interface UserGetOneParamDocument {
+    _id?: string
+    email?: string
+    password?: string
+    statusId?: number
+    url?: string
+    roleId?: number
+    ignoreUserId?: string[]
+}
+
+export interface UserGetManyParamDocument {
+    _id?: string[]
+    statusId?: number
+    email?: string,
+    count?: number,
+    page?: number
+    roleId?: number
+    ignoreUserId?: string[]
 }

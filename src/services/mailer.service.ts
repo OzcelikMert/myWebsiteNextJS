@@ -1,9 +1,9 @@
 import Api from "./api";
 import {ServicePages} from "constants/index";
-import {MailerPostParamDocument} from "types/services/mailer";
+import {MailerSendParamDocument} from "types/services/mailer";
 
 export default {
-    post(params: MailerPostParamDocument) {
+    send(params: MailerSendParamDocument) {
         return Api.post({
             url: [ServicePages.mailer],
             data: params,

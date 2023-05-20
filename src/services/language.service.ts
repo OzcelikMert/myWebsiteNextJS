@@ -1,12 +1,17 @@
 import Api from "./api";
 import {ServicePages} from "constants/index";
-import ServiceResultDocument from "types/services/api/result";
-import LanguageDocument, {LanguageGetParamDocument} from "types/services/language";
+import {LanguageGetResultDocument, LanguageGetOneParamDocument, LanguageGetManyParamDocument} from "types/services/language";
 
 export default {
-    get(params: LanguageGetParamDocument): Promise<ServiceResultDocument<LanguageDocument[]>> {
-        return Api.get({
-            url: [ServicePages.language],
+    getOne(params: LanguageGetOneParamDocument){
+        return Api.get<LanguageGetResultDocument | null>({
+            url: [ServicePages.language, "one"],
+            data: params
+        });
+    },
+    getMany(params: LanguageGetManyParamDocument) {
+        return Api.get<LanguageGetResultDocument[]>({
+            url: [ServicePages.language, "many"],
             data: params
         });
     },

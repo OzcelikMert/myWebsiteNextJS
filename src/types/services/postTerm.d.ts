@@ -1,21 +1,26 @@
-import {PopulateAuthorIdDocument} from "./user";
-import {PostTermTypeId, PostTypeId, StatusId} from "constants/index";
+import {UserPopulateDocument} from "./user";
+import {PostTermContentDocument, PostTermDocument} from "../models/postTerm";
 
-export interface PostTermContentDocument {
-    langId: string
-    image?: string,
-    title: string,
-    shortContent?: string,
-    url?: string,
-    seoTitle?: string,
-    seoContent?: string
-    views?: number
+export interface PostTermPopulateDocument {
+    _id: string,
+    typeId: number,
+    contents: {
+        langId: string,
+        title?: string,
+        image?: string
+        url?: string
+    }
 }
 
-export default interface PostTermDocument {
-    _id: string
-    postTypeId: PostTypeId,
-    typeId: PostTermTypeId,
+export interface PostTermAlternateDocument {
+    langId: string
+    title?: string,
+    url?: string
+}
+
+export type PostTermGetResultDocument = {
+    authorId: UserPopulateDocument,
+    lastAuthorId: UserPopulateDocument,
     mainId?: {
         _id: string
         contents: {
@@ -23,36 +28,33 @@ export default interface PostTermDocument {
             title: string,
             url: string,
         }
-    }
-    statusId: StatusId,
-    authorId: PopulateAuthorIdDocument
-    lastAuthorId: PopulateAuthorIdDocument
-    order: number,
-    views: number,
+    },
     contents?: PostTermContentDocument
+    alternates?: PostTermAlternateDocument[],
+    postCount?: number
+} & Omit<PostTermDocument, "contents"|"authorId"|"lastAuthorId"|"mainId">
+
+export interface PostTermGetOneParamDocument {
+    langId?: string
+    _id?: string
+    typeId: number,
+    postTypeId: number,
+    url?: string
+    statusId?: number,
+    ignoreTermId?: string[],
 }
 
-export interface PopulateTermsDocument {
-    _id: string,
-    typeId: PostTermTypeId
-    contents: {
-        langId: string,
-        title: string,
-    }
-}
-
-export interface PostTermGetParamDocument {
-    langId: string
-    typeId?: PostTermTypeId
-    postTypeId: PostTypeId
-    termId?: string
-    statusId?: StatusId
-}
-
-export type PostTermUpdateViewParamDocument = {
-    termId: string
-    typeId: number
-    langId: string
-    postTypeId: number
-    url: string
+export interface PostTermGetManyParamDocument {
+    langId?: string
+    _id?: string[]
+    typeId?: number[],
+    postTypeId: number,
+    url?: string
+    title?: string
+    statusId?: number,
+    ignoreTermId?: string[],
+    count?: number
+    page?: number
+    withPostCount?: boolean
+    ignoreDefaultLanguage?: boolean
 }

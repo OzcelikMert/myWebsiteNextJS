@@ -1,4 +1,4 @@
-export interface MailerPostParamDocument {
+export interface MailerSendParamDocument {
     contactFormId: string
     email: string
     message: string

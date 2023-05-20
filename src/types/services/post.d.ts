@@ -1,50 +1,13 @@
-import {PopulateTermsDocument} from "./postTerm";
-import {PopulateAuthorIdDocument} from "./user";
-import {PageTypeId, PostTypeId, StatusId} from "constants/index";
-import {ComponentDocument} from "types/services/component";
-
-export interface PostContentButtonDocument {
-    _id?: string
-    title: string,
-    url: string
-}
-
-export interface PostContentDocument {
-    langId: string
-    image?: string,
-    title: string,
-    content?: string,
-    shortContent?: string,
-    url?: string,
-    seoTitle?: string,
-    seoContent?: string
-    buttons?: PostContentButtonDocument[]
-}
-
-export default interface PostDocument {
-    _id: string
-    typeId: PostTypeId,
-    pageTypeId?: PageTypeId,
-    mainId?: {
-        _id: string
-        contents: {
-            langId: string
-            title: string,
-            url: string,
-        }
-    },
-    statusId: StatusId,
-    authorId: PopulateAuthorIdDocument
-    lastAuthorId: PopulateAuthorIdDocument
-    dateStart: Date,
-    order: number,
-    views: number,
-    isFixed?: boolean,
-    terms: (PopulateTermsDocument | undefined)[]
-    contents?: PostContentDocument,
-    components?: ComponentDocument[],
-    alternates?: PostAlternateDocument[]
-}
+import {UserPopulateDocument} from "./user";
+import {PostTermPopulateDocument} from "./postTerm";
+import {
+    PostContentDocument,
+    PostDocument,
+    PostECommerceDocument,
+    PostECommerceVariationContentDocument,
+    PostECommerceVariationDocument
+} from "../models/post";
+import {ComponentDocument} from "../models/component";
 
 export interface PostAlternateDocument {
     langId: string
@@ -52,20 +15,62 @@ export interface PostAlternateDocument {
     url?: string
 }
 
-export interface PostGetParamDocument {
+export type PostGetOneResultDocument = {
+    authorId: UserPopulateDocument,
+    lastAuthorId: UserPopulateDocument,
+    views?: number,
+    categories?: PostTermPopulateDocument[]
+    tags?: PostTermPopulateDocument[]
+    contents?: PostContentDocument
+    components?: ComponentDocument[],
+    alternates?: PostAlternateDocument[]
+    eCommerce?: (Omit<PostECommerceDocument<PostTermPopulateDocument, PostTermPopulateDocument[]>, "variations"> & {
+        variations?: (Omit<PostECommerceVariationDocument<PostTermPopulateDocument>, "contents"> & {
+            contents?: PostECommerceVariationContentDocument
+        })[]
+    })
+} & Omit<PostDocument, "contents"|"categories"|"tags"|"components"|"eCommerce"|"authorId"|"lastAuthorId">
+
+export type PostGetManyResultDocument = {
+    components?: PostDocument["components"]
+    eCommerce?: (Omit<PostECommerceDocument, "variations"> & {
+        variations?: (Omit<PostECommerceVariationDocument, "contents"> & {
+            contents?: PostECommerceVariationContentDocument | PostECommerceVariationContentDocument[]
+        })[]
+    })
+} & Omit<PostGetOneResultDocument, "eCommerce"|"components">
+
+export interface PostGetOneParamDocument {
+    typeId: number,
+    _id?: string
+    pageTypeId?: number
     langId?: string
-    url?: string,
-    pageTypeId?: PageTypeId
-    postId?: string
-    typeId?: PostTypeId | PostTypeId[]
-    statusId?: StatusId
-    getContents?: 1 | 0
-    maxCount?: number
+    url?: string
+    statusId?: number,
+    ignorePostId?: string[]
 }
 
-export type PostUpdateViewParamDocument = {
-    postId: string,
+export interface PostGetManyParamDocument {
+    _id?: string[]
+    isRecent?: boolean
+    typeId?: number[],
+    pageTypeId?: number[]
+    langId?: string
+    statusId?: number,
+    count?: number,
+    page?: number
+    ignorePostId?: string[]
+    title?: string
+    ignoreDefaultLanguage?: boolean
+}
+
+export interface PostGetCountParamDocument {
+    typeId: number
+    statusId?: number
+}
+
+export type PostUpdateOneViewParamDocument = {
+    _id: string,
     typeId: number
     langId: string
-    url: string
 }
